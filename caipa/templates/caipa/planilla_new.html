@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilla de Inscripcion</title>
+</head>
+<body style=" font-family:sans-serif; font-size:15px;">
+   <div style="display: flex; height: 100px;">
+     <div style="margin-left: 5%;" >
+    <img src="imagenes/img1.jpg " width="150px" height="150px" alt="">
+   </div>
+   <div style="margin-left: 13%;">
+    <h1 style="text-align: center; font-size: 20px;">Republica Bolivariana de Venezuela <br> Alcaldia del Municipio San Cristobal <br> Centro de Atencion Integral para Personas Autistas <br> "CAIPA"
+    </h1>
+   </div>
+</div>
+
+<center>
+        <h2>PLANILLA DE INSCRIPCION</h2>
+</center>
+</div>
+<form id="form_repre" action="/pdf_stu/print_pdf/">
+    {% csrf_token %}
+    <fieldset>
+    <legend><strong>DATOS GENERALES DEL ESTUDIANTE:</strong> </legend>
+    <table >
+    <tr >
+        <td><strong> Ciclo escolar:</strong> ______ </td>
+        <td><strong> Grado:</strong> ______ </td>
+        <td><strong> Grupo:</strong> ______ </td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Nuevo ingreso:</strong> [___]</td>
+        <td><strong>Plantel de procedencia:</strong> _____________</td>
+        <td><strong>Cedula de identidad o escolar:</strong> {{data.ced_stu}}</td>
+    </tr>
+    <tr>
+        <td><strong>Regular:</strong> [___]</td>
+        <td> <strong>Privada:</strong>: [___]</td>
+    </tr>
+    <tr>
+        <td><strong>Repitiente:</strong> [___]</td>
+        <td> <strong>Publica:</strong> [___]</td>
+    </tr>
+</table>
+<hr>
+<table >
+    <tr>
+        <td><strong>Apellidos:</strong> {{data.lastna_stu}}</td>
+        <td> <strong>Nombres:</strong> {{data.name_stu}}</td>
+    </tr>
+</table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Lugar de nacimiento:</strong> {{data.state_stu}}</td>
+        <td> <strong>Fecha de nacimiento:</strong> {{data.fech_nac}}</td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Estado de nacimiento:</strong> {{data.birth_stu}}</td>
+        <td> <strong>Pais:</strong> {% if data.natio_stu == 'Venezolana' %}Venezuela{% endif %}</td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Nacionalidad:</strong> {{data.natio_stu}}</td>
+        <td><strong>Genero:</strong> {{data.gender}}</td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Peso:</strong>{{data.pes_stu}}</td>
+        <td> <strong>Grupo sanguineo:</strong> {{data.grp_sng_stu}}</td>
+        <td><strong>Talla de zapato:</strong> {{data.zapa_stu}}</td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td><strong>Correo:</strong>{{data.email_stu}}</td>
+        <td> <strong>Tiene beca:</strong> Si [___]    No [___]</td>
+    </tr>
+    </table>
+    <hr>
+    <table>
+    <tr>
+        <td> <strong>Talla de pantalon:</strong> {{data.pan_stu}}</td>
+        <td><strong>Talla de camisa:</strong> {{data.cami_stu}}</td>
+    </tr>
+</table>
+</fieldset>
+<br>
+<fieldset>
+    <legend><strong>DATOS DE UBICACION DOMICILIARIA DEL ESTUDIANTE:</strong></legend>
+    <table>
+        <tr>
+            <td><strong>Ubicacion:</strong> {{data.direcc_stu}}</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+         <tr>
+            <td><strong>Estado:</strong> {{data.state_stu}}</td>
+            <td><strong>Municipio:</strong> {{data.birth_stu}}</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <td><strong>Condicion de vivienda:</strong> Alquilada [___] Propia pagada [___] Propia pagandose [___]</td>
+           
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <td> Invasion [___] Refugio [___] Consejeria [___] Herencia [___] Arrimado [___] Cedida [___]</td>
+           
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <td> Vive con el representante:</strong> Si [___] No [___] Madre [___] Padre [___] Ambos [___]</td>
+        </tr>
+    </table>
+</fieldset>
+<br>
+<div style="border: 1px solid;  min-height: 18vh;margin-right: 10%; margin-left: 80%;">
+     
+</div>
+<fieldset>
+    <legend><strong> DATOS GENERALES DEL REPRESENTANTE</strong></legend>
+    <table >
+        <tr>
+            <td><strong>Apellidos:</strong> {{repre.lastna_repre}}</td>
+            <td><strong>Cedula:</strong> {{repre.ced_repre}}</td>
+        </tr>
+    </table>
+    <hr>
+    <table >
+        <tr>
+            <td><strong>Nombres:</strong> {{repre.name_repre}}</td>
+        </tr>
+    </table>
+    <hr>
+    <table >
+        <tr>
+            <td><strong>Fecha de nacimiento:</strong> _______</td>
+            <td> <strong>Lugar de nacimiento:</strong> __________</td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <td><strong>Estado:</strong> __________</td>
+            <td> <strong>Pais:</strong> {% if data.natio_stu == 'Venezolana' %}Venezuela{% endif %}</td>
+        </tr>
+
+    </table>
+    <hr>
+    <table>
+        <tr>
+            <td><strong>Nacionalidad:</strong> __________</td>
+            <td><strong>Afinidad con la/el estudiante:</strong> __________</td>
+        </tr>
+    </table>
+</fieldset>
+</form>
+</body>
+</html>

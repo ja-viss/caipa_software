@@ -1,0 +1,13 @@
+Django
+asgiref
+autopep8
+Brotli
+dj-database-url
+gunicorn
+psycopg2-binary
+psycopg2
+pycodestyle
+sqlparse
+toml
+tzdata
+whitenoise
